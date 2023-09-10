@@ -7,7 +7,7 @@ const db_user = process.env.DB_USER;
 const db_pass = process.env.DB_PASS;
 const db_database = process.env.DB_DATABASE;
 
-// configurar conexión a database
+// configurar conexión a database con sequelize
 export const sequelize = new Sequelize(db_database, db_user, db_pass, {
   host: db_host,
   dialect: "mysql",
