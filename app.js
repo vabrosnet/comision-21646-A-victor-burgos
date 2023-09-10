@@ -1,12 +1,3 @@
-const express = require('express');
-const app = express();
+import { startDb } from './src/config/database.js';
 
-// importar variables de entorno
-require('dotenv').config({path:'./.env'});
-const port = process.env.PORT;
-
-app.get('/', function (req, res) {
-  res.send('Hello World');
-})
-
-app.listen(port, console.log(`Server listening in port ${port}`));
+startDb()
