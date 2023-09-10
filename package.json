@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Proyecto Integrador Final",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon app.js"
   },
