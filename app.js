@@ -1,3 +1,3 @@
-import { startDb } from './src/config/database.js';
+import { startDb } from './src/database/database.js';
 
 startDb()
