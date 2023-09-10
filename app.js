@@ -1,10 +1,12 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
-const port = 3000
+// importar variables de entorno
+require('dotenv').config({path:'./.env'});
+const port = process.env.PORT;
 
 app.get('/', function (req, res) {
-  res.send('Hello World')
+  res.send('Hello World');
 })
 
-app.listen(port, console.log(`Server listening in port ${port}`))
+app.listen(port, console.log(`Server listening in port ${port}`));
