@@ -2,10 +2,10 @@ import { Sequelize } from "sequelize";
 import 'dotenv/config';
 
 // importar variables de entorno
-const db_host = process.env.DB_HOST;
-const db_user = process.env.DB_USER;
-const db_pass = process.env.DB_PASS;
-const db_database = process.env.DB_DATABASE;
+const db_host = process.env.DB_HOST || "";
+const db_user = process.env.DB_USER || "";
+const db_pass = process.env.DB_PASS || "";
+const db_database = process.env.DB_DATABASE || "";
 
 // configurar conexión a database con sequelize
 export const sequelize = new Sequelize(db_database, db_user, db_pass, {
