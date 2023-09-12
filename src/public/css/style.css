@@ -12,7 +12,16 @@ body {
     background: radial-gradient(circle, rgba(241,241,242,1) 0%, rgba(77,117,128,0.5747549019607843) 99%);
 }
 
-#contenido {
+.bg-blue{
+    background: rgb(241,241,242);
+    background: radial-gradient(circle, rgba(241,241,242,1) 0%, rgba(11,108,185,1) 0%);
+}
+
+.white{
+    color: #fff;
+}
+
+#content {
     resize: none;
 }
 

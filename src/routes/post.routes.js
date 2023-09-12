@@ -1,12 +1,15 @@
 import { Router } from "express";
-import { ctrlCreatePost, ctrlDeletePost, ctrlGetPosts, ctrlUpdatePost, ctrlPostView, ctrlFoundPost } from "../controllers/post.controllers.js";
+import { ctrlPostHome, ctrlCreatePost, ctrlDeletePost, ctrlGetPosts, ctrlUpdatePost, ctrlPostView, ctrlFoundPost } from "../controllers/post.controllers.js";
 import { createPostSchema, editPostSchema } from "../models/schemas/post.schema.js";
 import { validator } from "../middlewares/validator.js";
 import { PostModel } from "../models/posts.js";
 
 const postRouter = Router();
 
-// RUTA PARA LA VISTA
+// Inicio
+postRouter.get('/', ctrlPostHome)
+
+// Administración
 postRouter.get('/posts', ctrlPostView)
 
 // endpoint para traer todos los posts
