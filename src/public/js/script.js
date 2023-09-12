@@ -45,7 +45,9 @@ form.addEventListener("submit", (event) => {
               'Sucesfully!',
               'success'
             )
-            location.reload();
+            setTimeout(() => {
+              location.reload();
+            }, "3000");
           }
         })
         .catch((err) => {
@@ -56,21 +58,36 @@ form.addEventListener("submit", (event) => {
 // evento click en boton para eliminar post
 document.addEventListener('click', (event) => {
   if (event.target.matches('#delete')) {
-      const rowPost = event.target.closest('.row-post')
-      const idPost = rowPost.dataset.id
+      const rowPost = event.target.closest('.row-post');
+      const idPost = rowPost.dataset.id;
 
-      fetch(`http://localhost:3000/api/posts/${idPost}`, {
-          method: 'DELETE'
-      }).then(res => {
-          if (res.ok) {
-              rowPost.remove()
-              //location.reload();
-          }
-      }).catch(err => {
-          console.error(err)
-      })
-  }
-})
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:3000/api/posts/${idPost}`, {
+            method: 'DELETE',
+          })
+            .then((res) => {
+              if (res.ok) {
+              rowPost.remove();
+            }
+          })
+          .catch((err) => {
+          console.error(err);
+          });
+      Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      }
+     });
+    }
+});
+
 
 // evento click en boton para obtenet post a editar
 document.addEventListener("click", (event) => {
@@ -111,36 +128,17 @@ formEdit.addEventListener("submit", (event) => {
       body: JSON.stringify(editPost)
     }).then(res => {
       if(res.ok){
-        //alert('Task edited successfully')
-        myModal.hide();
-        location.reload();
+        Swal.fire(
+          'Post edited!',
+          'Sucesfully!',
+          'success'
+        )
+
+        setTimeout(() => {
+          myModal.hide();
+          location.reload();
+        }, "3000");
       }
     })
 
 });
-
-// ventanas de confirmación
-// Swal.fire({
-//   title: 'Are you sure?',
-//   text: "You won't be able to revert this!",
-//   icon: 'warning',
-//   showCancelButton: true,
-//   confirmButtonColor: '#3085d6',
-//   cancelButtonColor: '#d33',
-//   confirmButtonText: 'Yes, delete it!'
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//     Swal.fire(
-//       'Deleted!',
-//       'Your file has been deleted.',
-//       'success'
-//     )
-//   }
-// })
-
-
-// Swal.fire(
-//   'Good job!',
-//   'You clicked the button!',
-//   'success'
-// )

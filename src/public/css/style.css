@@ -12,8 +12,18 @@ body {
     background: radial-gradient(circle, rgba(241,241,242,1) 0%, rgba(77,117,128,0.5747549019607843) 99%);
 }
 
+.logo {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.navbar-nav a:hover{
+    background: radial-gradient(circle, rgba(241,241,242,1) 0%, rgba(11,108,185,1) 0%);
+    border-radius: 5px;
+    color: #fff;
+}
+
 .bg-blue{
-    background: rgb(241,241,242);
     background: radial-gradient(circle, rgba(241,241,242,1) 0%, rgba(11,108,185,1) 0%);
 }
 
