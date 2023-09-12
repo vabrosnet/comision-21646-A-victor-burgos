@@ -26,7 +26,7 @@ btnClean.addEventListener('click', () =>{
 form.addEventListener("submit", (event) => {
     event.preventDefault();
       const newPost = {
-        title: newTitle.value,
+        title: newTitle.value.toUpperCase(),
         content: newContent.value,
         link: newLink.value,
       };
@@ -98,7 +98,7 @@ document.addEventListener("click", (event) => {
 formEdit.addEventListener("submit", (event) => {
   event.preventDefault();
     const editPost = {
-      title: editTitle.value,
+      title: editTitle.value.toUpperCase(),
       content: editContent.value,
       link: editLink.value,
     };

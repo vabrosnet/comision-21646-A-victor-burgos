@@ -15,3 +15,5 @@ El mismo consiste en un Foro Personalizado en entorno individual y aislado, para
 ## Ejecución:
 
 Para ejecutarlo "npm run dev" y luego en el navegador desde [Servidor local](http://localhost:3000)
+
+Crear la base de datos "virtual_epica" en servidor MySql
