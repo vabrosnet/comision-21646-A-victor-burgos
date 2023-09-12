@@ -2,4 +2,25 @@
 
 <%- include('partials/header') -%>
 
+<main class="container my-3">
+    <h1 class="centrado">Post Registration</h1>
+    <% posts.forEach(post=> { %>
+    <div class="row border border-primary-subtle mb-3">
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-blue">
+            <img src="<%= post.link %>" class="card-img-top" alt="nuevo titulo">
+            <span class="centrado white">Created: <%= (post.createdAt).toLocaleDateString() %></span>
+        </div>
+
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
+            <h2 class="centrado text-wrap text-break"><%= post.title %></h2>
+
+            <div class="text text-wrap text-break">
+                <p><%= post.content %></p>
+            </div>
+
+        </div>
+    </div>
+    <% }) %>
+</main>
+
 <%- include("partials/footer") -%>

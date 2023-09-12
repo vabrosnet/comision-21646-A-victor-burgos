@@ -21,11 +21,16 @@ body {
     color: #fff;
 }
 
-#content {
+.textarea {
     resize: none;
 }
 
 .centrado {
     text-align: center;
     vertical-align: middle;
+}
+
+.card-img-top{
+    height: 250px;
+    object-fit: cover;
 }

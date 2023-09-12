@@ -1,6 +1,8 @@
+//Declaración de constantes
 const btnSave = document.getElementById("btn-save");
 const btnClean = document.getElementById("btn-clean");
 const form = document.getElementById("create-form");
+const formEdit = document.getElementById("edit-form");
 const myModal = new bootstrap.Modal(document.getElementById("myModal"));
 const btnEdit = document.getElementById("btn-edit");
 
@@ -12,7 +14,8 @@ const editTitle = document.getElementById("editTitle");
 const editContent = document.getElementById("editContent");
 const editLink = document.getElementById("editLink");
 
-const url = ''
+//Declaración de variables
+let idEditPost = ''
 
 // limpiar form
 btnClean.addEventListener('click', () =>{
@@ -37,6 +40,11 @@ form.addEventListener("submit", (event) => {
       }).then(res => {
         console.log(res)
           if (res.ok) {
+            Swal.fire(
+              'Post created!',
+              'Sucesfully!',
+              'success'
+            )
             location.reload();
           }
         })
@@ -69,6 +77,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#edit")) {
     const rowPost = event.target.closest('.row-post')
     const idPost = rowPost.dataset.id
+    idEditPost = idPost
 
   fetch(`http://localhost:3000/api/posts/${idPost}`)
     .then(res => res.json())
@@ -76,7 +85,7 @@ document.addEventListener("click", (event) => {
     .catch(err => console.error(err))
   
     const mostrarData = (data) => {
-      let idForm = data.id;
+      idEditPost = data.id;
       editTitle.value = data.title;
       editContent.value = data.content;
       editLink.value = data.link;
@@ -84,3 +93,54 @@ document.addEventListener("click", (event) => {
     }       
   }
 });
+
+// evento submit en formulario editar post
+formEdit.addEventListener("submit", (event) => {
+  event.preventDefault();
+    const editPost = {
+      title: editTitle.value,
+      content: editContent.value,
+      link: editLink.value,
+    };
+
+    fetch(`http://localhost:3000/api/posts/${idEditPost}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(editPost)
+    }).then(res => {
+      if(res.ok){
+        //alert('Task edited successfully')
+        myModal.hide();
+        location.reload();
+      }
+    })
+
+});
+
+// ventanas de confirmación
+// Swal.fire({
+//   title: 'Are you sure?',
+//   text: "You won't be able to revert this!",
+//   icon: 'warning',
+//   showCancelButton: true,
+//   confirmButtonColor: '#3085d6',
+//   cancelButtonColor: '#d33',
+//   confirmButtonText: 'Yes, delete it!'
+// }).then((result) => {
+//   if (result.isConfirmed) {
+//     Swal.fire(
+//       'Deleted!',
+//       'Your file has been deleted.',
+//       'success'
+//     )
+//   }
+// })
+
+
+// Swal.fire(
+//   'Good job!',
+//   'You clicked the button!',
+//   'success'
+// )

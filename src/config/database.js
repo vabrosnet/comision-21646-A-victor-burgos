@@ -6,18 +6,19 @@ const db_host = process.env.DB_HOST || "";
 const db_user = process.env.DB_USER || "";
 const db_pass = process.env.DB_PASS || "";
 const db_database = process.env.DB_DATABASE || "";
+const db_dialec = process.env.DB_DIALEC || "";
 
 // configurar conexión a database con sequelize
 export const sequelize = new Sequelize(db_database, db_user, db_pass, {
   host: db_host,
-  dialect: "mysql",
+  dialect: db_dialec,
 });
 
 // conexión a database
 export const startDb = async () => {
   try {
     await sequelize.authenticate();
-    // await sequelize.sync({ force: true }); // sólo usar para reiniciar database
+    //await sequelize.sync({ force: true }); // sólo usar para reiniciar database
     await sequelize.sync();
     console.log("Connection to the database successful.");
   } catch (error) {
