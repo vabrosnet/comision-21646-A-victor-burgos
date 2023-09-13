@@ -42,12 +42,12 @@ form.addEventListener("submit", (event) => {
           if (res.ok) {
             Swal.fire(
               'Post created!',
-              'Sucesfully!',
+              'Succesfully!',
               'success'
             )
             setTimeout(() => {
               location.reload();
-            }, "3000");
+            }, "2000");
           }
         })
         .catch((err) => {
@@ -83,6 +83,9 @@ document.addEventListener('click', (event) => {
           console.error(err);
           });
       Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        setTimeout(() => {
+          location.reload();
+        }, "2000");
       }
      });
     }
@@ -130,14 +133,14 @@ formEdit.addEventListener("submit", (event) => {
       if(res.ok){
         Swal.fire(
           'Post edited!',
-          'Sucesfully!',
+          'Succesfully!',
           'success'
         )
 
         setTimeout(() => {
           myModal.hide();
           location.reload();
-        }, "3000");
+        }, "2000");
       }
     })
 
